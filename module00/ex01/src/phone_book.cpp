@@ -13,14 +13,19 @@ void PhoneBook::add() {
     };
 
     for (int i = 0; i < FIELD_COUNT; i++) {
-        std::cout << "Enter" << fieldNames[i] << ": ";
-        if (!std::getline(std::cin, input)){
-            std::cerr << "Error reading input." << std::endl;
-            return;
-        }
-        if (input.empty()) {
-            std::cerr << "Input cannot be empty." << std::endl;
-            return;
+        bool validInput = false;
+
+        while (!validInput) {
+            std::cout << "Enter" << fieldNames[i] << ": ";
+            if (!std::getline(std::cin, input)) {
+                std::cerr << "Error reading input." << std::endl;
+                return;
+            }
+            if (input.empty()) {
+                std::cerr << "Input cannot be empty." << std::endl;
+            } else {
+                validInput = true;
+            }
         }
         if (oldest == 8) {
             oldest = 0;
