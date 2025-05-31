@@ -6,7 +6,7 @@
 /*   By: yutsasak <yutsasak@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 17:25:55 by yutsasak          #+#    #+#             */
-/*   Updated: 2025/05/09 17:25:56 by yutsasak         ###   ########.fr       */
+/*   Updated: 2025/05/31 17:09:16 by yutsasak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int main(int argc, char **argv)
         return 0;
     }
     for (int i = 1; i < argc; i++) {
-        upper += toUpper(argv[i]);
+        upper += (std::string)toUpper(argv[i]);
         if (i != argc - 1)
             upper += " ";
     }
