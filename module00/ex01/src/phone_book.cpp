@@ -42,6 +42,31 @@ void PhoneBook::add() {
 }
 
 void PhoneBook::search() {
+    std::cout << std::setw(10) << "index" << "|";
+    std::cout << std::setw(10) << "first name" << "|";
+    std::cout << std::setw(10) << "last name" << "|";
+    std::cout << std::setw(10) << "nickname" << std::endl;
+    std::cout << "----------+----------+----------+----------" << std::endl;
+    
+    for (int i = 0; i < 8 ; i++) {
+        if (contacts[i].getFirstName().empty()) {
+            continue;
+        }
+        std::cout << std::setw(10) << i + 1 << "|";
+        displayTruncated(contacts[i].getFirstName());
+        std::cout << "|";
+        displayTruncated(contacts[i].getLastName());
+        std::cout << "|";
+        displayTruncated(contacts[i].getNickname());
+        std::cout << std::endl;
+    }
+    std::cout << "----------+----------+----------+----------" << std::endl;
+}
 
-    std::cout << "Search functionality not yet implemented." << std::endl;
+void PhoneBook::displayTruncated(const std::string &str) const {
+    if (str.length() > 10) {
+        std::cout << std::setw(10) << (str.substr(0, 9) + ".");
+    } else {
+        std::cout << std::setw(10) << str;
+    }
 }

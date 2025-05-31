@@ -4,6 +4,7 @@
 #include "contact.hpp"
 
 #include <iostream>
+#include <iomanip>
 
 
 class PhoneBook {
@@ -15,6 +16,7 @@ public:
     PhoneBook();
     void add();
     void search();
+    void displayTruncated(const std::string &str) const;
 };
 
 #endif
