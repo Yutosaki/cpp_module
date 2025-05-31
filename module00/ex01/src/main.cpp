@@ -2,10 +2,11 @@
 
 int main(void){
     PhoneBook PhoneBook;
-    std::cout << "enter command: ADD, SEARCH, EXIT" << std::endl;
 
     while(1) {
         std::string command;
+
+        std::cout << "enter command: ADD, SEARCH, EXIT: ";
         std::getline(std::cin, command);
         if (command == "ADD") {
             PhoneBook.add();
