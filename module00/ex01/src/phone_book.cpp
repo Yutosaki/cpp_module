@@ -45,6 +45,12 @@ void PhoneBook::add() {
 }
 
 void PhoneBook::search() {
+    if (contacts[0].getFirstName().empty()) {
+        std::cout << "Phonebook is empty. Use ADD to create a contact." << std::endl;
+        return;
+    }
+
+    std::cout << "----------+----------+----------+----------" << std::endl;
     std::cout << std::setw(10) << "index" << "|";
     std::cout << std::setw(10) << "first name" << "|";
     std::cout << std::setw(10) << "last name" << "|";
@@ -65,12 +71,6 @@ void PhoneBook::search() {
     }
     std::cout << "----------+----------+----------+----------" << std::endl;
 
-    
-    if (contacts[0].getFirstName().empty()) {
-        std::cout << "Phonebook is empty. Use ADD to create a contact." << std::endl;
-        return;
-    }
-
     int index;
     std::string input;
     bool flag = true;
@@ -79,7 +79,7 @@ void PhoneBook::search() {
         if (!std::getline(std::cin, input)) {
             std::cout << "Error reading input." << std::endl;
             return;
-        }else if (input.empty() || !std::all_of(input.begin(), input.end(), ::isdigit)) {
+        }else if (input.empty() || !std::isdigit(input[0]) || input.find_first_not_of("0123456789") != std::string::npos) {
             std::cerr << "Error: Please enter a valid index." << std::endl;
             continue;
         }else {
