@@ -9,7 +9,7 @@ int main(void){
         std::cout << "enter command: ADD, SEARCH, EXIT: ";
         if (!std::getline(std::cin, command)) {
             std::cout << "Error reading command." << std::endl;
-            continue;
+            return 1;
         }
         if (command == "ADD") {
             PhoneBook.add();
