@@ -8,15 +8,15 @@
 
 
 class PhoneBook {
-private:
-    Contact contacts[8];
-    int oldest;
-
-public:
-    PhoneBook();
-    void add();
-    void search();
-    void displayTruncated(const std::string &str) const;
+    private:
+        Contact contacts[8];
+        int oldest;
+    
+    public:
+        PhoneBook();
+        void add();
+        void search();
+        void displayTruncated(const std::string &str) const;
 };
 
 #endif
