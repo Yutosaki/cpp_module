@@ -8,8 +8,8 @@ int main(void){
 
         std::cout << "enter command: ADD, SEARCH, EXIT: ";
         if (!std::getline(std::cin, command)) {
-            std::cerr << "Error reading command." << std::endl;
-            return 1;
+            std::cout << "Error reading command." << std::endl;
+            continue;
         }
         if (command == "ADD") {
             PhoneBook.add();
