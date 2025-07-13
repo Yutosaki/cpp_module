@@ -7,7 +7,10 @@ int main(void){
         std::string command;
 
         std::cout << "enter command: ADD, SEARCH, EXIT: ";
-        std::getline(std::cin, command);
+        if (!std::getline(std::cin, command)) {
+            std::cerr << "Error reading command." << std::endl;
+            return 1;
+        }
         if (command == "ADD") {
             PhoneBook.add();
         } else if (command == "SEARCH") {
