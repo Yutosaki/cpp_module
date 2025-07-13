@@ -20,9 +20,12 @@ void PhoneBook::add() {
             if (!std::getline(std::cin, input)) {
                 std::cerr << "Error reading input." << std::endl;
                 return;
-            }
-            if (input.empty()) {
+            }else if (input.empty()) {
                 std::cerr << "Input cannot be empty." << std::endl;
+            } else if (input.find_first_not_of(" \t\n\r\f\v") == std::string::npos) {
+                std::cerr << "Input cannot contain only whitespace. Please try again." << std::endl;
+            } else if (i == 3 && input.find_first_not_of("0123456789") != std::string::npos) {
+                std::cerr << "Phone number must contain only digits. Please try again." << std::endl;
             } else {
                 validInput = true;
             }
