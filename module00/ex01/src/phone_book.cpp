@@ -83,7 +83,7 @@ void PhoneBook::search() {
             std::cerr << "Error: Please enter a valid index." << std::endl;
             continue;
         }else {
-            index = std::stoi(input);
+            index = std::atoi(input.c_str());
             if (index < 0 || index >= MAX_CONTACTS || contacts[index].getFirstName().empty()) {
                 std::cerr << "Error: Invalid index. Please enter a valid index." << std::endl;
                 continue;
