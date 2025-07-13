@@ -5,13 +5,14 @@
 
 #include <iostream>
 #include <iomanip>
+#include <cstdlib>
 
 
 class PhoneBook {
     private:
         Contact contacts[MAX_CONTACTS];
         int oldest;
-    
+
     public:
         PhoneBook();
         void add();
