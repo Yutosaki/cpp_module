@@ -9,7 +9,7 @@
 
 class PhoneBook {
     private:
-        Contact contacts[8];
+        Contact contacts[MAX_CONTACTS];
         int oldest;
     
     public:

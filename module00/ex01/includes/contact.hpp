@@ -4,6 +4,7 @@
 #include <string>
 
 const int FIELD_COUNT = 5;
+const int MAX_CONTACTS = 8;
 
 class Contact {
     private:

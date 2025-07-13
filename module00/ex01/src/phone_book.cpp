@@ -48,7 +48,7 @@ void PhoneBook::search() {
     std::cout << std::setw(10) << "nickname" << std::endl;
     std::cout << "----------+----------+----------+----------" << std::endl;
     
-    for (int i = 0; i < 8 ; i++) {
+    for (int i = 0; i < MAX_CONTACTS ; i++) {
         if (contacts[i].getFirstName().empty()) {
             continue;
         }
