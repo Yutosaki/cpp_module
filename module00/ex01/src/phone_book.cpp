@@ -27,7 +27,7 @@ void PhoneBook::add() {
                 validInput = true;
             }
         }
-        if (oldest == 8) {
+        if (oldest == MAX_CONTACTS) {
             oldest = 0;
         }
         switch (i) {
@@ -62,14 +62,8 @@ void PhoneBook::search() {
     }
     std::cout << "----------+----------+----------+----------" << std::endl;
 
-    int contact_count = 0;
-    for (int i = 0; i < MAX_CONTACTS; ++i) {
-        if (!contacts[i].getFirstName().empty()) {
-            contact_count++;
-        }
-    }
-
-    if (contact_count == 0) {
+    
+    if (contacts[0].getFirstName().empty()) {
         std::cout << "Phonebook is empty. Use ADD to create a contact." << std::endl;
         return;
     }
