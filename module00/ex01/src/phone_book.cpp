@@ -52,7 +52,7 @@ void PhoneBook::search() {
         if (contacts[i].getFirstName().empty()) {
             continue;
         }
-        std::cout << std::setw(10) << i + 1 << "|";
+        std::cout << std::setw(10) << i << "|";
         displayTruncated(contacts[i].getFirstName());
         std::cout << "|";
         displayTruncated(contacts[i].getLastName());
@@ -61,6 +61,48 @@ void PhoneBook::search() {
         std::cout << std::endl;
     }
     std::cout << "----------+----------+----------+----------" << std::endl;
+
+    int contact_count = 0;
+    for (int i = 0; i < MAX_CONTACTS; ++i) {
+        if (!contacts[i].getFirstName().empty()) {
+            contact_count++;
+        }
+    }
+
+    if (contact_count == 0) {
+        std::cout << "Phonebook is empty. Use ADD to create a contact." << std::endl;
+        return;
+    }
+
+    int index;
+    std::string input;
+    bool flag = true;
+    while (flag) {
+        std::cout << "Enter the index of the contact to display: ";
+        if (!std::getline(std::cin, input)) {
+            std::cout << "Error reading input." << std::endl;
+            return;
+        }else if (input.empty() || !std::all_of(input.begin(), input.end(), ::isdigit)) {
+            std::cerr << "Error: Please enter a valid index." << std::endl;
+            continue;
+        }else {
+            index = std::stoi(input);
+            if (index < 0 || index >= MAX_CONTACTS || contacts[index].getFirstName().empty()) {
+                std::cerr << "Error: Invalid index. Please enter a valid index." << std::endl;
+                continue;
+            }
+            flag = false;
+        }
+    }
+
+    const Contact& contact = contacts[index];
+    std::cout << "\n--- Contact Details (Index " << index << ") ---" << std::endl;
+    std::cout << "First Name:     " << contact.getFirstName() << std::endl;
+    std::cout << "Last Name:      " << contact.getLastName() << std::endl;
+    std::cout << "Nickname:       " << contact.getNickname() << std::endl;
+    std::cout << "Phone Number:   " << contact.getPhoneNumber() << std::endl;
+    std::cout << "Darkest Secret: " << contact.getDarkestSecret() << std::endl;
+    std::cout << "---------------------------------" << std::endl;
 }
 
 void PhoneBook::displayTruncated(const std::string &str) const {
