@@ -3,3 +3,5 @@
 *.o
 ex00/Zombie
 ex01/zombieHorde
+ex02/brain
+ex03/weapon
