@@ -18,7 +18,7 @@ int main(int argc, char **argv)
         return 1;
     }
 
-    std::ifstream infile(filename);
+    std::ifstream infile(filename.c_str());
     if (!infile.is_open())
     {
         std::cerr << "Error: Could not open file " << filename << std::endl;
@@ -33,7 +33,8 @@ int main(int argc, char **argv)
     
     std::string replacedContent = replace(fileContent, s1, s2);
 
-    std::ofstream outfile(filename + ".replace");
+    std::string output_filename = filename + ".replace";
+    std::ofstream outfile(output_filename.c_str());
     if (!outfile.is_open())
     {
         std::cerr << "Error: Could not create output file." << std::endl;
