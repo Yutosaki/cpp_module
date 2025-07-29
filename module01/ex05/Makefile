@@ -1,7 +1,7 @@
 NAME = harl
 
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -stdlib=libc++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 INCLUDE_DIR = includes/
 INCLUDES = -I $(INCLUDE_DIR)

@@ -1,7 +1,7 @@
 NAME = brain
 
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -stdlib=libc++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRCS_DIR = .
 SRCS_FILES = main.cpp

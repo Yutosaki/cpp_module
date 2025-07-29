@@ -9,7 +9,7 @@ SRCS = $(addprefix $(SRC_DIR), $(SRC_FILES))
 
 OBJS = $(SRCS:.cpp=.o)
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -stdlib=libc++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
 $(NAME): $(OBJS)
