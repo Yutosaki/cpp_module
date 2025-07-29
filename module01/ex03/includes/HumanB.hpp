@@ -6,16 +6,16 @@
 #include <iostream>
 
 class HumanB {
-    private:
-        std::string name_;
-        Weapon *weapon_;
-
     public:
         HumanB(const std::string &name);
         ~HumanB();
 
         void attack() const;
         void setWeapon(Weapon &weapon);
+
+    private:
+        std::string name_;
+        Weapon *weapon_;
 };
 
 #endif
