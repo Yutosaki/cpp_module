@@ -1,7 +1,7 @@
 .history
 .vscode
 *.o
-ex00/Zombie
+ex00/zombie
 ex01/zombieHorde
 ex02/brain
 ex03/weapon
