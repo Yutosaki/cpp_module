@@ -6,11 +6,11 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 INCLUDES_DIR = includes/
 INCLUDES = -I $(INCLUDES_DIR)
 
-HEADER_FILES = Claptrap.hpp
+HEADER_FILES = ClapTrap.hpp
 HEADERS = $(addprefix $(INCLUDES_DIR), $(HEADER_FILES))
 
 SRCS_DIR = srcs/
-SRCS_FILES = main.cpp Claptrap.hpp
+SRCS_FILES = main.cpp ClapTrap.cpp
 SRCS = $(addprefix $(SRCS_DIR), $(SRCS_FILES))
 
 OBJS = $(SRCS:.cpp=.o)
