@@ -6,11 +6,11 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 INCLUDES_DIR = includes/
 INCLUDES = -I $(INCLUDES_DIR)
 
-HEADER_FILES = Animal.hpp Cat.hpp Dog.hpp WrongAnimal.hpp WrongCat.hpp Brain.hpp
+HEADER_FILES = AAnimal.hpp Cat.hpp Dog.hpp WrongAnimal.hpp WrongCat.hpp Brain.hpp
 HEADERS = $(addprefix $(INCLUDES_DIR), $(HEADER_FILES))
 
 SRCS_DIR = srcs/
-SRCS_FILES = main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
+SRCS_FILES = main.cpp AAnimal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
 SRCS = $(addprefix $(SRCS_DIR), $(SRCS_FILES))
 
 OBJS = $(SRCS:.cpp=.o)
