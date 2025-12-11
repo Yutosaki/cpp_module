@@ -8,7 +8,6 @@ int main(void) {
             std::cout << a << "\n";
             a.DecrementGrade();
             std::cout << a << "\n";
-            std::cout << a << "\n";
         } catch (const std::exception &e) {
             std::cerr << e.what() << "\n";
             a.IncrementGrade();

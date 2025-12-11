@@ -3,13 +3,13 @@ NAME = a.out
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 
-INCLUDES_DIR = includes/
+INCLUDES_DIR = include/
 INCLUDES = -I $(INCLUDES_DIR)
 
 HEADER_FILES = Bureaucrat.h
 HEADERS = $(addprefix $(INCLUDES_DIR), $(HEADER_FILES))
 
-SRCS_DIR = srcs/
+SRCS_DIR = src/
 SRCS_FILES = main.cpp Bureaucrat.cpp
 SRCS = $(addprefix $(SRCS_DIR), $(SRCS_FILES))
 
