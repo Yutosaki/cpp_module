@@ -1,3 +1,7 @@
+#include <exception>
+#include <iostream>
+#include <string>
+
 #include "Bureaucrat.h"
 
 int main(void) {
