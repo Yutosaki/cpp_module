@@ -20,7 +20,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
-%.o: %.cpp $(INCLUDES_FILES)
+%.o: %.cpp $(HEADERS)
 	$(CXX) $(CXXFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
@@ -30,11 +30,11 @@ fclean: clean
 	$(RM) $(NAME)
 
 format:
-	clang-format -i *.h *.cpp
+	clang-format -i $(SRCS) $(HEADERS)
 
 linter:
-	clang-tidy *.cpp --extra-arg="isysroot" --extra-arg="$(xcrun --show-sdk-path)" -- -I. -std=c++98
+	clang-tidy $(SRCS) --extra-arg="-I$(INCLUDES_DIR)" -- -std=c++98
 
 re: fclean all
 
-.PHONEY: clean fclean re all
+.PHONEY: all clean fclean format linter re
