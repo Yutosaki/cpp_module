@@ -1,5 +1,8 @@
 #include "Bureaucrat.h"
 
+#include <iostream>
+#include <string>
+
 Bureaucrat::Bureaucrat() : grade_(Bureaucrat::MIN_GRADE) {}
 
 Bureaucrat::Bureaucrat(const std::string &name, int grade) : name_(name), grade_(grade) {
