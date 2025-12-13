@@ -1,8 +1,8 @@
-#include "Bureaucrat.h"
-#include "Form.h"
-
-#include <iostream>
 #include <exception>
+#include <iostream>
+
+#include "../include/Bureaucrat.h"
+#include "../include/Form.h"
 
 int main(void) {
     std::cout << "----------------form << operator----------------" << "\n";
