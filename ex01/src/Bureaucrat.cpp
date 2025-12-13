@@ -1,4 +1,4 @@
-#include "Bureaucrat.h"
+#include "../include/Bureaucrat.h"
 
 #include <iostream>
 #include <string>
@@ -58,4 +58,14 @@ void Bureaucrat::DecrementGrade() {
 std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat) {
     os << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << ".";
     return os;
+}
+
+void Bureaucrat::signForm(Form &form) const {
+    try {
+        form.beSigned(*this);
+        std::cout << this->getName() << " signed " << form.getName() << std::endl;
+    } catch (const std::exception &e) {
+        std::cout << this->getName() << " couldn’t sign " << form.getName()
+                  << " because " << e.what() << "." << std::endl;
+    }
 }
