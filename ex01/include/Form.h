@@ -3,6 +3,10 @@
 
 #include <iostream>
 
+#include "../include/Bureaucrat.h"
+
+class Bureaucrat;
+
 class Form {
    public:
     Form();
@@ -29,7 +33,7 @@ class Form {
    private:
     const std::string name_;
     bool isSigned_;
-    const int gradeRequiredSign;
+    const int gradeRequiredSign_;
     const int gradeRequiredExecute_;
     static const int DEFAULT_GRADE = 1;
 };
