@@ -4,6 +4,10 @@
 #include <exception>
 #include <string>
 
+#include "Form.h"
+
+class Form;
+
 class Bureaucrat {
    public:
     Bureaucrat();
@@ -27,6 +31,8 @@ class Bureaucrat {
     void DecrementGrade();
     static const int MAX_GRADE = 1;
     static const int MIN_GRADE = 150;
+
+    void signForm(Form &form) const;
 
    private:
     const std::string name_;
