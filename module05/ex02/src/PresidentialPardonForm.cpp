@@ -9,13 +9,16 @@ PresidentialPardonForm::PresidentialPardonForm(const std::string &target) : AFor
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &form) : AForm(form), target_(form.target_) {}
 
 PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm &form) {
+    if (this == &form) {
+        return *this;
+    }
     AForm::operator=(form);
     return *this;
 }
 
 PresidentialPardonForm::~PresidentialPardonForm() {}
 
-const std::string &PresidentialPardonForm::getTarget() const { return target_; };
+const std::string &PresidentialPardonForm::getTarget() const { return target_; }
 
 void PresidentialPardonForm::doExecute() const {
     std::cout << target_ << " has been pardoned by Zaphod Beeblebrox." << "\n";
