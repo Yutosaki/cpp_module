@@ -10,7 +10,7 @@ HEADER_FILES = Bureaucrat.h AForm.h presidentialPardonForm.h RobotomyRequesrForm
 HEADERS = $(addprefix $(INCLUDES_DIR), $(HEADER_FILES))
 
 SRCS_DIR = src/
-SRCS_FILES = main.cpp Bureaucrat.cpp AForm.cpp presidentialPardonForm.cpp RobotomyRequesrForm.cpp ShrubberyCreationForm.cpp
+SRCS_FILES = main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp
 SRCS = $(addprefix $(SRCS_DIR), $(SRCS_FILES))
 
 OBJS = $(SRCS:.cpp=.o)
