@@ -20,6 +20,13 @@ Form::Form(const std::string &name, const int gradeRequiredSign, const int grade
 
 Form::~Form() {}
 
+Form &Form::operator=(const Form &form) {
+    if (this != &form) {
+        this->isSigned_ = form.getSigned();
+    }
+    return *this;
+}
+
 const std::string &Form::getName() const { return name_; }
 
 bool Form::getSigned() const { return isSigned_; }
