@@ -32,8 +32,8 @@ class Bureaucrat {
     static const int MAX_GRADE = 1;
     static const int MIN_GRADE = 150;
 
-    void signAForm(AForm &form) const;
-    void executeAForm(const AForm &form) const;
+    void signForm(AForm &form) const;
+    void executeForm(const AForm &form) const;
 
    private:
     const std::string name_;

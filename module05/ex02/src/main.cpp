@@ -14,8 +14,8 @@ int main(void) {
     {
         ShrubberyCreationForm a;
         Bureaucrat b = Bureaucrat("b", 1);
-        b.signAForm(a);
-        b.executeAForm(a);
+        b.signForm(a);
+        b.executeForm(a);
         std::cout << '\n';
     }
     {
@@ -23,7 +23,7 @@ int main(void) {
         ShrubberyCreationForm a;
         Bureaucrat b = Bureaucrat("b", 1);
         try {
-            b.executeAForm(a);
+            b.executeForm(a);
         } catch (const std::exception &e) {
             std::cerr << e.what() << "\n";
         }
@@ -34,8 +34,8 @@ int main(void) {
         ShrubberyCreationForm a;
         Bureaucrat b = Bureaucrat("b", 138);
         try {
-            b.signAForm(a);
-            b.executeAForm(a);
+            b.signForm(a);
+            b.executeForm(a);
         } catch (const std::exception &e) {
             std::cerr << e.what() << "\n";
         }
@@ -47,8 +47,8 @@ int main(void) {
         RobotomyRequestForm a;
         Bureaucrat b = Bureaucrat("b", 1);
         try {
-            b.signAForm(a);
-            b.executeAForm(a);
+            b.signForm(a);
+            b.executeForm(a);
         } catch (const std::exception &e) {
             std::cerr << e.what() << "\n";
         }
@@ -59,7 +59,7 @@ int main(void) {
         RobotomyRequestForm a;
         Bureaucrat b = Bureaucrat("b", 1);
         try {
-            b.executeAForm(a);
+            b.executeForm(a);
         } catch (const std::exception &e) {
             std::cerr << e.what() << "\n";
         }
@@ -70,8 +70,8 @@ int main(void) {
         RobotomyRequestForm a;
         Bureaucrat b = Bureaucrat("b", 46);
         try {
-            b.signAForm(a);
-            b.executeAForm(a);
+            b.signForm(a);
+            b.executeForm(a);
         } catch (const std::exception &e) {
             std::cerr << e.what() << "\n";
         }
@@ -83,8 +83,8 @@ int main(void) {
         PresidentialPardonForm a;
         Bureaucrat b = Bureaucrat("b", 1);
         try {
-            b.signAForm(a);
-            b.executeAForm(a);
+            b.signForm(a);
+            b.executeForm(a);
         } catch (const std::exception &e) {
             std::cerr << e.what() << "\n";
         }
@@ -95,7 +95,7 @@ int main(void) {
         PresidentialPardonForm a;
         Bureaucrat b = Bureaucrat("b", 1);
         try {
-            b.executeAForm(a);
+            b.executeForm(a);
         } catch (const std::exception &e) {
             std::cerr << e.what() << "\n";
         }
@@ -106,8 +106,8 @@ int main(void) {
         PresidentialPardonForm a;
         Bureaucrat b = Bureaucrat("b", 6);
         try {
-            b.signAForm(a);
-            b.executeAForm(a);
+            b.signForm(a);
+            b.executeForm(a);
         } catch (const std::exception &e) {
             std::cerr << e.what() << "\n";
         }

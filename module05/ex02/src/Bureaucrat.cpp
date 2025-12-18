@@ -62,7 +62,7 @@ std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat) {
     return os;
 }
 
-void Bureaucrat::signAForm(AForm &form) const {
+void Bureaucrat::signForm(AForm &form) const {
     try {
         form.beSigned(*this);
         std::cout << this->getName() << " signed " << form.getName() << "\n";
@@ -72,7 +72,7 @@ void Bureaucrat::signAForm(AForm &form) const {
     }
 }
 
-void Bureaucrat::executeAForm(const AForm &form) const {
+void Bureaucrat::executeForm(const AForm &form) const {
     try {
         form.execute(*this);
         std::cout << this->getName() << " executed " << form.getName() << "\n";
