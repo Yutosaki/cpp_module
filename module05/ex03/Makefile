@@ -6,11 +6,11 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 INCLUDES_DIR = include/
 INCLUDES = -I $(INCLUDES_DIR)
 
-HEADER_FILES = Bureaucrat.h AForm.h presidentialPardonForm.h RobotomyRequesrForm.h ShrubberyCreationForm.h
+HEADER_FILES = Bureaucrat.h AForm.h presidentialPardonForm.h RobotomyRequesrForm.h ShrubberyCreationForm.h Intern.h
 HEADERS = $(addprefix $(INCLUDES_DIR), $(HEADER_FILES))
 
 SRCS_DIR = src/
-SRCS_FILES = main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp
+SRCS_FILES = main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp Intern.cpp
 SRCS = $(addprefix $(SRCS_DIR), $(SRCS_FILES))
 
 OBJS = $(SRCS:.cpp=.o)
