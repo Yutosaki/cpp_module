@@ -1,8 +1,5 @@
 #include "../include/AForm.h"
-#include "../include/Bureaucrat.h"
-#include "../include/PresidentialPardonForm.h"
-#include "../include/RobotomyRequestForm.h"
-#include "../include/ShrubberyCreationForm.h"
+#include "../include/Intern.h"
 
 void printSeparator(std::string message) {
     std::cout << "---------------------" << message << "---------------------"
@@ -10,106 +7,43 @@ void printSeparator(std::string message) {
 }
 
 int main(void) {
-    printSeparator("test ShrubberyCreationForm");
     {
-        ShrubberyCreationForm a;
-        Bureaucrat b = Bureaucrat("b", 1);
-        b.signForm(a);
-        b.executeForm(a);
-        std::cout << '\n';
-    }
-    {
-        printSeparator("exception form not signed");
-        ShrubberyCreationForm a;
-        Bureaucrat b = Bureaucrat("b", 1);
-        try {
-            b.executeForm(a);
-        } catch (const std::exception &e) {
-            std::cerr << e.what() << "\n";
+        printSeparator("test shrubbery");
+        Intern someRandomIntern;
+        AForm* rrf = someRandomIntern.makeForm("shrubbery creation", "Bender");
+        if (rrf) {
+            std::cout << *rrf << "\n";
         }
-        std::cout << '\n';
+        delete rrf;
     }
+    std::cout << '\n';
     {
-        printSeparator("exception grade is too low");
-        ShrubberyCreationForm a;
-        Bureaucrat b = Bureaucrat("b", 138);
-        try {
-            b.signForm(a);
-            b.executeForm(a);
-        } catch (const std::exception &e) {
-            std::cerr << e.what() << "\n";
+        printSeparator("test robotomy");
+        Intern someRandomIntern;
+        AForm* rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+        if (rrf) {
+            std::cout << *rrf << "\n";
         }
+        delete rrf;
     }
-
-    std::cout << "\n\n";
-    printSeparator("test RobotomyRequestForm");
+    std::cout << '\n';
     {
-        RobotomyRequestForm a;
-        Bureaucrat b = Bureaucrat("b", 1);
-        try {
-            b.signForm(a);
-            b.executeForm(a);
-        } catch (const std::exception &e) {
-            std::cerr << e.what() << "\n";
+        printSeparator("test presidential");
+        Intern someRandomIntern;
+        AForm* rrf = someRandomIntern.makeForm("presidential pardon", "Bender");
+        if (rrf) {
+            std::cout << *rrf << "\n";
         }
-        std::cout << '\n';
+        delete rrf;
     }
+    std::cout << '\n';
     {
-        printSeparator("exception form not signed");
-        RobotomyRequestForm a;
-        Bureaucrat b = Bureaucrat("b", 1);
-        try {
-            b.executeForm(a);
-        } catch (const std::exception &e) {
-            std::cerr << e.what() << "\n";
+        printSeparator("test invalid name");
+        Intern someRandomIntern;
+        AForm* rrf = someRandomIntern.makeForm("hoge", "Bender");
+        if (rrf) {
+            std::cout << *rrf << "\n";
         }
-        std::cout << '\n';
-    }
-    {
-        printSeparator("exception grade is too low");
-        RobotomyRequestForm a;
-        Bureaucrat b = Bureaucrat("b", 46);
-        try {
-            b.signForm(a);
-            b.executeForm(a);
-        } catch (const std::exception &e) {
-            std::cerr << e.what() << "\n";
-        }
-    }
-
-    std::cout << "\n\n";
-    printSeparator("test PresidentialPardonForm");
-    {
-        PresidentialPardonForm a;
-        Bureaucrat b = Bureaucrat("b", 1);
-        try {
-            b.signForm(a);
-            b.executeForm(a);
-        } catch (const std::exception &e) {
-            std::cerr << e.what() << "\n";
-        }
-        std::cout << '\n';
-    }
-    {
-        printSeparator("exception form not signed");
-        PresidentialPardonForm a;
-        Bureaucrat b = Bureaucrat("b", 1);
-        try {
-            b.executeForm(a);
-        } catch (const std::exception &e) {
-            std::cerr << e.what() << "\n";
-        }
-        std::cout << '\n';
-    }
-    {
-        printSeparator("exception grade is too low");
-        PresidentialPardonForm a;
-        Bureaucrat b = Bureaucrat("b", 6);
-        try {
-            b.signForm(a);
-            b.executeForm(a);
-        } catch (const std::exception &e) {
-            std::cerr << e.what() << "\n";
-        }
+        delete rrf;
     }
 }
