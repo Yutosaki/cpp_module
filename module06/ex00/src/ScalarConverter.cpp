@@ -3,6 +3,8 @@
 #include <cctype>
 #include <iostream>
 #include <limits>
+#include <cstdlib>
+#include <cerrno>
 
 ScalarConverter::ScalarConverter() {}
 

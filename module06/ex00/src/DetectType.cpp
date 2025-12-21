@@ -1,5 +1,10 @@
 #include <cstdlib>
 
+#include <cctype>
+#include <iostream>
+#include <limits>
+#include <cerrno>
+
 #include "ScalarConverter.h"
 
 std::string trim(const std::string &s) {
