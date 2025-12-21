@@ -1,4 +1,4 @@
-NAME = a.out
+NAME = convert
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
@@ -6,11 +6,11 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 INCLUDES_DIR = include/
 INCLUDES = -I $(INCLUDES_DIR)
 
-HEADER_FILES = Bureaucrat.h
+HEADER_FILES = ScalarConverter.h
 HEADERS = $(addprefix $(INCLUDES_DIR), $(HEADER_FILES))
 
 SRCS_DIR = src/
-SRCS_FILES = main.cpp Bureaucrat.cpp
+SRCS_FILES = main.cpp ScalarConverter.cpp DetectType.cpp PrintScalar.cpp
 SRCS = $(addprefix $(SRCS_DIR), $(SRCS_FILES))
 
 OBJS = $(SRCS:.cpp=.o)
