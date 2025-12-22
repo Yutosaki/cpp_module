@@ -8,7 +8,6 @@ const int ASCII_PRINTABLE_MIN = 32;
 const int ASCII_PRINTABLE_MAX = 126;
 bool ft_isfinite(double x) { return !std::isnan(x) && !std::isinf(x); }
 
-// print function
 void printChar(int value) {
     std::cout << "char: ";
     if (value >= ASCII_PRINTABLE_MIN && value <= ASCII_PRINTABLE_MAX) {

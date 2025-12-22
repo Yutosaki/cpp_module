@@ -39,28 +39,17 @@ bool isChar(const std::string &s) {
 
 bool isSign(int ch) { return (ch == '+' or ch == '-'); }
 
-#if 0
-bool isInt(const std::string &s) {
-    char *ptr;
-    strtol(s.c_str(), &ptr, 10);
-    return (*ptr == '\0');
-}
-#endif
-
 bool isInt(const std::string &s) {
     char *ptr;
     errno = 0;
     long result = std::strtol(s.c_str(), &ptr, 10);
 
-    // 2. Check if parsing failed (ptr didn't move or didn't reach end)
     if (s.c_str() == ptr || *ptr != '\0')
         return false;
 
-    // 3. Check for Overflow/Underflow reported by strtol
     if (errno == ERANGE)
         return false;
 
-    // 4. Check if the value fits specifically in an INT (since long might be 64-bit)
     if (result > std::numeric_limits<int>::max() || result < std::numeric_limits<int>::min())
         return false;
 
