@@ -31,8 +31,9 @@ cases=(
   "-0.0"                # negative zero
 )
 
-for lit in "${cases[@]}"; do
-  printf '==== Test: "%s" ====\n' "$lit"
-  ./convert "$lit"
+for i in "${cases[@]}"
+do
+  printf '==== Test: "%s" ====\n' "$i"
+  ./convert "$i"
   echo
 done
