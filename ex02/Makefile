@@ -6,7 +6,7 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 INCLUDES_DIR = include/
 INCLUDES = -I $(INCLUDES_DIR)
 
-HEADER_FILES =
+HEADER_FILES = A.h B.h Base.h C.h
 HEADERS = $(addprefix $(INCLUDES_DIR), $(HEADER_FILES))
 
 SRCS_DIR = src/
