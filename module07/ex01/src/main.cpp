@@ -23,4 +23,5 @@ int main(void) {
     std::cout << '\n';
     iter(strs, slen, addExclamation);
     iter(strs, slen, &printx<std::string>);
+    std::cout << '\n';
 }
