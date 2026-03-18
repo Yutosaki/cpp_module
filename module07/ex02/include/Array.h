@@ -11,12 +11,12 @@ class Array {
     Array() : data_(NULL), size_(0) {}
     explicit Array(const unsigned int n) : data_(NULL), size_(n) {
         if (size_ > 0) {
-            data_ = new T[size_];
+            data_ = new T[size_]();
         }
     }
     explicit Array(const unsigned int n, const T& value) : data_(NULL), size_(n) {
         if (size_ > 0) {
-            data_ = new T[size_];
+            data_ = new T[size_]();
             for (std::size_t i = 0; i < size_; ++i) {
                 data_[i] = value;
             }
@@ -24,7 +24,7 @@ class Array {
     }
     Array(const Array& other) : data_(NULL), size_(other.size_) {
         if (size_ > 0) {
-            data_ = new T[size_];
+            data_ = new T[size_]();
             for (size_t i = 0; i < size_; ++i) {
                 data_[i] = other.data_[i];
             }
