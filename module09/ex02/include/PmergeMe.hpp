@@ -4,24 +4,17 @@
 #include <ctime>
 #include <string>
 
-// ペアとその位置情報を表現する構造体
 struct PairWithIndex {
-    int larger;
     int smaller;
-    size_t index;  // 元のペア配列でのインデックス
-
-    PairWithIndex() : larger(0), smaller(0), index(0) {}
-    PairWithIndex(int a, int b, size_t idx)
-        : larger(a > b ? a : b), smaller(a > b ? b : a), index(idx) {}
+    int larger;
+    size_t original_index;
+    PairWithIndex(int s, int l, size_t idx) : smaller(s), larger(l), original_index(idx) {}
 };
 
-// main_chainの各要素とそのペア情報を紐付ける構造体
 struct ChainElement {
-    int value;          // main_chainの値
-    size_t pair_index;  // 対応するペアのインデックス
-
-    ChainElement() : value(0), pair_index(0) {}
-    ChainElement(int val, size_t idx) : value(val), pair_index(idx) {}
+    int value;
+    size_t pair_index;
+    ChainElement(int v, size_t idx) : value(v), pair_index(idx) {}
 };
 
 template <typename Container>

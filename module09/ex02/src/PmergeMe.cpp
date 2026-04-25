@@ -39,15 +39,21 @@ PmergeMe<Container>::PmergeMe() {}
 template <typename Container>
 PmergeMe<Container>::PmergeMe(char** argv) {
     if (!load_container(argv))
-        throw std::runtime_error("Fail to load cotent");
+        throw std::runtime_error("Fail to load content");
 }
 
 template <typename Container>
-PmergeMe<Container>::PmergeMe(const PmergeMe& other) { (void)other; }
+PmergeMe<Container>::PmergeMe(const PmergeMe& other) {
+    *this = other;
+}
 
 template <typename Container>
 PmergeMe<Container>& PmergeMe<Container>::operator=(const PmergeMe& other) {
-    (void)other;
+    if (this != &other) {
+        this->container = other.container;
+        this->time_start_ = other.time_start_;
+        this->time_end_ = other.time_end_;
+    }
     return *this;
 }
 
@@ -96,13 +102,12 @@ void PmergeMe<Container>::print_elements(const char* label) const {
 }
 
 // 二分探索でelementを[left, right)の範囲に挿入する関数
-// left, rightはイテレータで、comp_countは比較回数カウント用
-// 戻り値は挿入後のイテレータ
 namespace {
 template <typename Container, typename Iterator, typename T>
-Iterator binary_insert(Container& cont, Iterator left, Iterator right, const T& element) {
+Iterator binary_insert(Container& cont, Iterator left, Iterator right, const T& element, size_t& comp_count) {
     while (left < right) {
         Iterator mid = left + (right - left) / 2;
+        comp_count++;  // 比較回数カウント
         if (*mid < element) {
             left = mid + 1;
         } else {
@@ -115,9 +120,8 @@ Iterator binary_insert(Container& cont, Iterator left, Iterator right, const T& 
 
 // Jacobstal Numberを返す閉形式
 namespace {
-template <typename Container>
 int jacobsthal(int k) {
-    double result = (std::pow(2, k) - std::pow(-1, k)) / 3.0;
+    double result = (std::pow(2.0, k) - std::pow(-1.0, k)) / 3.0;
     return static_cast<int>(result + 0.5);  // C++98でのround代替
 }
 }  // namespace
@@ -136,7 +140,7 @@ Container generate_jacobsthal_order(size_t n) {
     Container jacobsthal_nums;
     int k = 3;  // J(3) = 3から開始（J(0) = 0, J(1) = 1, J(2) = 1は区間を生まないため不要）
     while (true) {
-        int jk = jacobsthal<Container>(k);
+        int jk = jacobsthal(k);
         if (jk > static_cast<int>(n)) break;
         jacobsthal_nums.push_back(jk);
         k++;
@@ -161,7 +165,6 @@ Container generate_jacobsthal_order(size_t n) {
                 added[idx] = 1;
             }
         }
-
         current_pos = jk;
     }
 
@@ -178,32 +181,36 @@ Container generate_jacobsthal_order(size_t n) {
 
 namespace {
 template <typename Container>
-void ford_johnson(Container& v) {
+void ford_johnson(Container& v, size_t& comp_count) {
     const size_t n = v.size();
     if (n <= 1) return;
 
-    // step 1. ペアを作る（位置情報付き）
     std::vector<PairWithIndex> pairs;
     bool is_odd = (n % 2) != 0;
     int odd_val = 0;
     for (size_t i = 0; i + 1 < n; i += 2) {
         int a = v[i];
         int b = v[i + 1];
-        pairs.push_back(PairWithIndex(a, b, i / 2));
+        comp_count++;  // ペア作成時の比較をカウント
+        if (a > b) {
+            pairs.push_back(PairWithIndex(b, a, i / 2));
+        } else {
+            pairs.push_back(PairWithIndex(a, b, i / 2));
+        }
     }
     if (is_odd) odd_val = v[n - 1];
 
-    // step 2. ペアの大きい方だけ抜き出して main_chain を作る
-    // main_chainを値＋ペアインデックスで作る
     std::vector<std::pair<int, size_t> > main_chain;
     for (size_t i = 0; i < pairs.size(); ++i)
         main_chain.push_back(std::make_pair(pairs[i].larger, i));
 
-    // main_chain_valuesはContainer型で作成（vectorでもdequeでもOK）
     Container main_chain_values;
     for (size_t i = 0; i < main_chain.size(); ++i)
         main_chain_values.push_back(main_chain[i].first);
-    ford_johnson(main_chain_values);
+
+    // 再帰呼び出し（比較カウントを引き継ぐ）
+    ford_johnson(main_chain_values, comp_count);
+
     // main_chain_valuesの順序に合わせてmain_chainを並び替え
     std::vector<std::pair<int, size_t> > sorted_main_chain;
     for (size_t i = 0; i < main_chain_values.size(); ++i) {
@@ -224,6 +231,7 @@ void ford_johnson(Container& v) {
         result.push_back(pairs[main_chain_0_idx].smaller);
         result.push_back(main_chain[0].first);
     }
+
     // pending_with_info生成
     std::vector<ChainElement> pending_with_info;
     for (size_t i = 0; i < main_chain.size(); ++i) {
@@ -264,7 +272,7 @@ void ford_johnson(Container& v) {
 
             // 奇数要素（pair_idx == pairs.size()）の場合は全範囲で挿入
             if (pair_idx == pairs.size()) {
-                binary_insert(result, result.begin(), result.end(), element);
+                binary_insert(result, result.begin(), result.end(), element, comp_count);
                 continue;
             }
 
@@ -278,7 +286,7 @@ void ford_johnson(Container& v) {
             }
 
             // 挿入範囲を設定: 開始からペアの相手の位置まで
-            binary_insert(result, result.begin(), partner_pos, element);
+            binary_insert(result, result.begin(), partner_pos, element, comp_count);
         }
     }
 
@@ -295,8 +303,14 @@ void PmergeMe<Container>::sort_ford_johnson() {
         time_end_ = std::clock();
         return;
     }
-    ford_johnson(container);
+
+    size_t comp_count = 0;
+    ford_johnson(container, comp_count);
+
     time_end_ = std::clock();
+
+    // 必要に応じて比較回数を出力（情報理論的限界の確認等に使用）
+    // std::cout << "[" << container_type() << "] Total comparisons: " << comp_count << std::endl;
 }
 
 template class PmergeMe<std::vector<int> >;
